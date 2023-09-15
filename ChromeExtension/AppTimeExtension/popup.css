@@ -1,0 +1,108 @@
+/* popup.css */
+
+body {
+  width: 30rem;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.favicon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+span {
+  color: #333;
+  font-size: 14px;
+}
+
+/* Add more styles as needed */
+
+#domain-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 10rem;
+}
+
+.list-div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 5;
+}
+
+.list-div span{
+  padding: 1rem;
+  color: #333;
+}
+
+.time-div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 2rem;
+  flex-grow: 1;
+}
+
+.time-div span{
+  text-align: center;
+  font-weight: 800;
+  width: 3rem;
+  padding: 1rem;
+  color: #333;
+  background-color: #72ffa6;
+}
+
+#chart{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 4rem;
+  margin-top: 1rem;
+}
+
+.info-div{
+  position: relative;
+  display: flex;
+  height: 3rem;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  color: #f5f5f5;
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  padding: 0.5rem;
+  z-index: 999;
+}

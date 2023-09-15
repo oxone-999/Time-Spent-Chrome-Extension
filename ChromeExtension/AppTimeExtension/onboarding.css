@@ -1,0 +1,31 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.onboarding-page {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.onboarding-header {
+  text-align: center;
+}
+
+.onboarding-content {
+  margin-top: 2em;
+}
+
+.onboarding-feature-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.onboarding-feature-list li {
+  margin-bottom: 1em;
+}
+
+.onboarding-footer {
+  text-align: center;
+}
