@@ -35,10 +35,20 @@ chrome.tabs.onActivated.addListener(async function (activeInfo) {
 
   startTime = new Date().getTime(); // Update the start time
 
-  // Check if the current tab is in the same domain as the previous tab
-  const tab = await chrome.tabs.get(activeTabId);
-  const tabUrl = tab.url;
-  const domainName = new URL(tabUrl).hostname;
+  let domainName = "";
+  try {
+    const tab = await chrome.tabs.get(activeTabId);
+    const tabUrl = tab.url;
+    domainName = new URL(tabUrl).hostname;
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    // Send a message to the background script to show an error notification
+    chrome.runtime.sendMessage({
+      type: "show_error_notification",
+      message: "Invalid URL",
+    });
+    // Handle the error or set domainName to a default value as needed
+  }
 
   if (previousDomain && previousDomain !== domainName) {
     const elapsedTime = (startTime - previousTime) / 1000;
@@ -56,6 +66,19 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === "install") {
     chrome.tabs.create({
       url: "onboarding.html",
+    });
+  }
+});
+
+// Add an event listener to handle messages from popup.js
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  if (message.type === "show_error_notification") {
+    // Show an error notification using chrome.notifications API
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: "icon.png", // Replace with your icon URL
+      title: "Error",
+      message: message.message,
     });
   }
 });

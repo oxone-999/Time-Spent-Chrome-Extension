@@ -1,31 +1,51 @@
 body {
   font-family: sans-serif;
+  background-color: #26577c;
   margin: 0;
   padding: 0;
+  color: #fcfcfc;
 }
 
 .onboarding-page {
-  width: 500px;
+  width: 90%;
   margin: 0 auto;
 }
 
 .onboarding-header {
+  margin: 2rem 0 2rem 0;
+  padding: 0.2rem;
   text-align: center;
+  width: 100%;
+  color:black;
+  background-color: #fcfcfc;
 }
 
 .onboarding-content {
   margin-top: 2em;
+  font-size: medium;
 }
 
 .onboarding-feature-list {
   list-style-type: none;
   padding-left: 0;
+  font-size: small;
 }
 
 .onboarding-feature-list li {
   margin-bottom: 1em;
+  font-size: small;
 }
 
 .onboarding-footer {
   text-align: center;
+}
+
+a{
+  color: #fcfcfc;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #fcfcfc;
+  text-decoration: underline;
 }
