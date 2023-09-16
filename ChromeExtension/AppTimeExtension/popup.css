@@ -37,7 +37,7 @@ span {
 
 /* Add more styles as needed */
 
-#domain-list{
+#domain-list {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@ span {
   height: 10rem;
 }
 
-.list-div{
+.list-div {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -55,12 +55,12 @@ span {
   flex-grow: 5;
 }
 
-.list-div span{
+.list-div span {
   padding: 1rem;
   color: #333;
 }
 
-.time-div{
+.time-div {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -70,28 +70,27 @@ span {
   flex-grow: 1;
 }
 
-.time-div span{
+.time-div span {
   text-align: center;
   font-weight: 800;
-  width: 3rem;
+  width: 4rem;
   padding: 1rem;
   color: #333;
   background-color: #72ffa6;
 }
 
-#chart{
+#chart {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
   height: 4rem;
   margin-top: 1rem;
+  background-color: #3b3b3b;
 }
 
-.info-div{
+.info-div {
   position: relative;
-  display: flex;
-  height: 3rem;
 }
 
 .tooltip {
@@ -105,4 +104,35 @@ span {
   border-radius: 5px;
   padding: 0.5rem;
   z-index: 999;
+}
+
+.top-five {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10rem;
+  margin-top: 1rem;
+  background-color: #3b3b3b;
+}
+
+.top-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  height: 1.1rem;
+  margin-top: 0.3rem;
+  padding: 0.7rem;
+  background-color: #dfdfdf;
+  border-radius: 0.5rem;
+}
+
+h2{
+  color: #393939;
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 1rem 0;
 }

@@ -4,20 +4,19 @@ let previousTime = null;
 let today = new Date().toLocaleDateString(); // To keep track of the current day
 let previousDomain = null;
 
-function saveDataToStorage(domain, elapsedTime) {
+// Function to save data to local storage for a specific domain and day
+function saveDataToStorage(domain, day, elapsedTime) {
   return new Promise((resolve) => {
     chrome.storage.local.get(domain, function (data) {
-      const previousTotalTime = data[domain] || 0;
+      const domainData = data[domain] || {};
+      const previousTotalTime = domainData[day] || 0;
 
-      console.log(previousDomain,previousTotalTime, elapsedTime);
+      // Update the storage with the new total time for the domain and day
+      domainData[day] = previousTotalTime + elapsedTime;
 
-      // Update the storage with the new total time for the domain
-      chrome.storage.local.set(
-        { [domain]: previousTotalTime + elapsedTime },
-        function () {
-          resolve();
-        }
-      );
+      chrome.storage.local.set({ [domain]: domainData }, function () {
+        resolve();
+      });
     });
   });
 }
@@ -53,8 +52,8 @@ chrome.tabs.onActivated.addListener(async function (activeInfo) {
   if (previousDomain && previousDomain !== domainName) {
     const elapsedTime = (startTime - previousTime) / 1000;
 
-    // Save the data and wait for it to complete
-    await saveDataToStorage(previousDomain, elapsedTime);
+    // Save the data for the previous domain and day, and wait for it to complete
+    await saveDataToStorage(previousDomain, today, elapsedTime);
 
     previousTime = startTime;
   }
@@ -89,7 +88,7 @@ chrome.runtime.onSuspend.addListener(async function () {
     const currentTime = new Date().getTime();
     const elapsedTime = currentTime - previousTime;
 
-    // Save the data and wait for it to complete
-    await saveDataToStorage(previousDomain, elapsedTime);
+    // Save the data for the previous domain and day, and wait for it to complete
+    await saveDataToStorage(previousDomain, today, elapsedTime);
   }
 });
